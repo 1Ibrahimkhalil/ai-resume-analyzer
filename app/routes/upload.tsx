@@ -53,7 +53,7 @@ const upload = () => {
     const data = {
       id: uuid,
       resumePath: uploadedFile.path,
-      imgPath: uploadedImage.path,
+      imagePath: uploadedImage.path,
       companyName,
       jobTitle,
       jobDescription,
@@ -81,6 +81,7 @@ const upload = () => {
         setStatusText("Analysis complete , redirecting ...")
 
         console.log(data);
+        navigate(`/resume/${uuid}`)
         
   };
 
