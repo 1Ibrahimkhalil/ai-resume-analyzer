@@ -91,6 +91,7 @@ interface PuterStore {
     ) => Promise<string | undefined>;
   };
   init: () => void;
+    clearError: () => void;
 }
 
 const getPuter = (): typeof window.puter | null =>
@@ -381,7 +382,7 @@ export const usePuterStore = create<PuterStore>((set, get) => {
           ],
         },
       ],
-      { model: 'openai/gpt-5.6-luna' },
+      { model: 'claude-opus-4-8' },
     ) as Promise<AIResponse | undefined>;
   };
 
@@ -434,5 +435,6 @@ export const usePuterStore = create<PuterStore>((set, get) => {
         img2txt(image, testMode),
     },
     init,
+      clearError: () => set({ error: null }),
   };
 });
