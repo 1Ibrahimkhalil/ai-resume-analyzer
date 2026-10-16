@@ -68,12 +68,16 @@ const upload = () => {
       uploadedFile.path,
       prepareInstructions({ jobTitle, jobDescription }),
     );
+    console.log("AI feedback:", feedback);
     if (!feedback) return setStatusText("Error:Failed to analyze resume");
 
-    const feedbackText =
-      typeof feedback.message.content === "string"
-        ? feedback.message.content
-        : feedback.message.content[0].text;
+    const content = feedback.message.content;
+
+const feedbackText =
+  typeof content === "string"
+    ? content
+    : content.find((item) => item.type === "text")?.text;
+
         data.feedback = JSON.parse(feedbackText)
 
         await kv.set(`resume:${uuid}`,JSON.stringify(data))
