@@ -33,7 +33,7 @@ const FileUploader = ({ onFileSelect }: FileUploaderProps) => {
                 type="button"
                 className="p-4 cursor-pointer"
                 onClick={(e) => {
-                  e.stopPropagation();
+                  
                   onFileSelect?.(null);
                 }}
               >

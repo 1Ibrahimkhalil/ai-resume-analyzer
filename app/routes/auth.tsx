@@ -1,7 +1,7 @@
+import { useState } from "react";
 import { AuthForm } from "~/features/auth/components/AuthForm";
 import { useAuthRedirect } from "~/features/auth/hooks/useAuthRedirect";
 import { usePuterStore } from "~/lib/puter";
-
 
 export const meta = () => [
   { title: "ResuAI | Auth" },
@@ -10,7 +10,9 @@ export const meta = () => [
 
 const auth = () => {
   const { isLoading, auth } = usePuterStore();
-  useAuthRedirect(auth.isAuthenticated);
+ 
+  useAuthRedirect(auth.isAuthenticated, );
+
 
   return (
     <AuthForm

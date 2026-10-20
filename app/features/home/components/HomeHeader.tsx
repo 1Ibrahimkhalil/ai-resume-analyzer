@@ -8,7 +8,7 @@ export default function HomeHeader({
   loadingResumes,
 }: HomeHeaderProps) {
   return (
-    <div className="page-heading py-16">
+    <div className="page-heading py-8">
       <h1>Track Your Applications & Resume Ratings</h1>
 
       {!loadingResumes && !hasResumes ? (

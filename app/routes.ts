@@ -1,3 +1,4 @@
+
 import {
   type RouteConfig,
   index,
@@ -8,9 +9,13 @@ import {
 export default [
   layout("components/Layout.tsx", [
     index("routes/home.tsx"),
-    route("/auth", "routes/auth.tsx"),
-    route("/upload", "routes/upload.tsx"),
-    route("/wipe", "routes/wipe.tsx"),
+    
+    layout("components/ProtectedLayout.tsx", [
+      route("/upload", "routes/upload.tsx"),
+      route("/wipe", "routes/wipe.tsx"),
+      route("/resume/:id", "routes/resume.tsx"),
+    ]),
   ]),
-  route("/resume/:id", "routes/resume.tsx"),
+  route("/auth", "routes/auth.tsx"),
+  route("*", "routes/not-found.tsx"),
 ] satisfies RouteConfig;
