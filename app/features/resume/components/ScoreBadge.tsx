@@ -1,8 +1,8 @@
-interface IProps {
-  score: number;
-}
+import type { ScoreProps } from "../types";
 
-const ScoreBadge = ({ score }: IProps) => {
+
+
+const ScoreBadge = ({ score }: ScoreProps ) => {
   let badgeColor = "";
   let badgeText = "";
 

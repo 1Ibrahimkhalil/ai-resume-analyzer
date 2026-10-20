@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
+import type { ScoreProps } from "../types";
 
-const ScoreGauge = ({ score = 75 }: { score: number }) => {
+const ScoreGauge = ({ score = 75 }: Partial<ScoreProps>) => {
   const [pathLength, setPathLength] = useState(0);
   const pathRef = useRef<SVGPathElement>(null);
 
