@@ -18,15 +18,7 @@ const resume = () => {
   useResumeAuth({ id, isLoading, isAuthenticated: auth.isAuthenticated });
 
   return (
-    <main className="!pt-0 ">
-      <nav className="resume-nav">
-        <Link to="/" className="back-button">
-          <img src="/icons/back.svg" alt="logo" className="w-2.5 h-2.5" />
-          <span className="text-gray-800 text-sm font-semibold">
-            Back to Homepage
-          </span>
-        </Link>
-      </nav>
+    <main className="!pt-0 bg-white my-8 ">
       <div className="flex flex-row w-full max-lg:flex-col-reverse ">
         <ResumePreview imageUrl={imageUrl} resumeUrl={resumeUrl} />
         <ResumeFeedback feedback={feedback} />

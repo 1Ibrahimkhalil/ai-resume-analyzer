@@ -1,6 +1,6 @@
 import Navbar from "~/components/Navbar";
 import type { Route } from "./+types/home";
-import { useHomeAuth } from "~/features/home/hooks/useHomeAuth";
+
 import { useResumes } from "~/features/home/hooks/useResumes";
 import HomeHeader from "~/features/home/components/HomeHeader";
 import ResumeList from "~/features/home/components/ResumeList";
@@ -14,7 +14,7 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
-  useHomeAuth();
+
   const { resumes, loadingResumes } = useResumes();
 
   return (

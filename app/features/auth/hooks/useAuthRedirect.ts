@@ -1,15 +1,25 @@
 import { useEffect } from "react";
-import { useLocation, useNavigate } from "react-router";
+import { useLocation, useNavigate, useSearchParams } from "react-router";
 
 export function useAuthRedirect(isAuthenticated: boolean) {
   const location = useLocation();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
-  const next = location.search.split("next=")[1];
+  const next = searchParams.get("next");
 
   useEffect(() => {
-    if (isAuthenticated && next) {
-      navigate(next);
+    if (!isAuthenticated || location.pathname !== "/auth") {
+      return;
     }
-  }, [isAuthenticated, next, navigate]);
+    if (isAuthenticated) {
+      navigate("/");
+      return;
+    }
+
+    const destination =
+      next && next.startsWith("/") && !next.startsWith("//") ? next : "/";
+
+    navigate(destination, { replace: true });
+  }, [isAuthenticated, location.pathname, next, navigate]);
 }
