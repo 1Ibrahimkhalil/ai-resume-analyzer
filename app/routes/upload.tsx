@@ -25,8 +25,8 @@ const upload = () => {
     handleAnalyzed({ companyName, jobTitle, jobDescription, file });
   };
   return (
-    <main className="bg-[url('/images/bg-main.svg')] bg-cover">
-      <Navbar />
+   
+      
       <section className="main-section">
         <div className="page-heading py-16">
           <h1>Smart feedback for your dream job</h1>
@@ -46,7 +46,7 @@ const upload = () => {
           )}
         </div>
       </section>
-    </main>
+    
   );
 };
 

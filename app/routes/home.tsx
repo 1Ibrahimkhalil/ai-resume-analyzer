@@ -18,8 +18,8 @@ export default function Home() {
   const { resumes, loadingResumes } = useResumes();
 
   return (
-    <main className="bg-[url('/images/bg-main.svg')] bg-cover">
-      <Navbar />
+   
+      
       <section className="main-section">
         <HomeHeader
           hasResumes={resumes.length > 0}
@@ -27,6 +27,6 @@ export default function Home() {
         />
         <ResumeList loadingResumes={loadingResumes} resumes={resumes} />
       </section>
-    </main>
+   
   );
 }
