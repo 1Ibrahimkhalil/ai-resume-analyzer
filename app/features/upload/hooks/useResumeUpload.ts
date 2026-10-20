@@ -6,9 +6,6 @@ import { generateUUID } from "~/lib/utils";
 import { prepareInstructions } from "../../../../constans";
 import type { UploadResumeParams } from "../types";
 
-
-
-
 export function useResumeUpload() {
   const { fs, kv, ai } = usePuterStore();
   const navigate = useNavigate();

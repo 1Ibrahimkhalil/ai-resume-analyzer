@@ -1,31 +1,11 @@
-import React, { useCallback, useState } from "react";
-import { useDropzone } from "react-dropzone";
 import { formatSize } from "~/lib/utils";
+import { useFileUploader } from "../hooks/useFileUploader";
+import type { FileUploaderProps } from "../types";
 
-interface IProps {
-  onFileSelect?: (file: File | null) => void;
-}
-
-const FileUploader = ({ onFileSelect }: IProps) => {
-  const onDrop = useCallback(
-    (acceptedFiles: File[]) => {
-      const file = acceptedFiles[0] || null;
-
-      onFileSelect?.(file);
-    },
-    [onFileSelect],
-  );
-
-  const maxFileSize = 20 * 1024 * 1024;
-
-  const { getRootProps, getInputProps, isDragActive, acceptedFiles } =
-    useDropzone({
-      onDrop,
-      multiple: false,
-      accept: { "application/pdf": [".pdf"] },
-      maxSize: maxFileSize,
-    });
-  const file = acceptedFiles[0] || null;
+const FileUploader = ({ onFileSelect }: FileUploaderProps) => {
+  const { getRootProps, getInputProps, file, maxFileSize } = useFileUploader({
+    onFileSelect,
+  });
   return (
     <div className="w-full gradient-border">
       {" "}
@@ -49,9 +29,16 @@ const FileUploader = ({ onFileSelect }: IProps) => {
                 </div>
               </div>
 
-              <button className="p-4 cursor-pointer" onClick={(e)=>{
-                onFileSelect?.(null)
-              }}><img src="/icons/cross.svg" alt="remove"  className="w-4 h-4"/></button>
+              <button
+                type="button"
+                className="p-4 cursor-pointer"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onFileSelect?.(null);
+                }}
+              >
+                <img src="/icons/cross.svg" alt="remove" className="w-4 h-4" />
+              </button>
             </div>
           ) : (
             <div>
