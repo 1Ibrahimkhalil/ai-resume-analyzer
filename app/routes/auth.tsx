@@ -1,6 +1,7 @@
+import { AuthForm } from "~/features/auth/components/AuthForm";
+import { useAuthRedirect } from "~/features/auth/hooks/useAuthRedirect";
 import { usePuterStore } from "~/lib/puter";
-import { useAuthRedirect } from "../../features/auth/hooks/useAuthRedirect";
-import { AuthForm } from "../../features/auth/components/AuthForm";
+
 
 export const meta = () => [
   { title: "ResuAI | Auth" },
