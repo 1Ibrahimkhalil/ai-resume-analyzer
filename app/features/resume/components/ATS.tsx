@@ -1,14 +1,7 @@
 import React from 'react'
+import type { ATSProps } from '../types';
 
-interface Suggestion {
-  type: "good" | "improve";
-  tip: string;
-}
 
-interface ATSProps {
-  score: number;
-  suggestions: Suggestion[];
-}
 
 const ATS: React.FC<ATSProps> = ({ score, suggestions }) => {
 

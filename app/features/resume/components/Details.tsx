@@ -5,8 +5,15 @@ import {
   AccordionHeader,
   AccordionItem,
 } from "./Accordion";
+import type {
+  CategoryContentProps,
+  CategoryHeaderProps,
+  DetailsProps,
+  ScoreProps,
 
-const ScoreBadge = ({ score }: { score: number }) => {
+} from "../types";
+
+const ScoreBadge = ({ score }: ScoreProps ) => {
   return (
     <div
       className={cn(
@@ -14,8 +21,8 @@ const ScoreBadge = ({ score }: { score: number }) => {
         score > 69
           ? "bg-badge-green"
           : score > 39
-          ? "bg-badge-yellow"
-          : "bg-badge-red"
+            ? "bg-badge-yellow"
+            : "bg-badge-red",
       )}
     >
       <img
@@ -29,8 +36,8 @@ const ScoreBadge = ({ score }: { score: number }) => {
           score > 69
             ? "text-badge-green-text"
             : score > 39
-            ? "text-badge-yellow-text"
-            : "text-badge-red-text"
+              ? "text-badge-yellow-text"
+              : "text-badge-red-text",
         )}
       >
         {score}/100
@@ -39,13 +46,7 @@ const ScoreBadge = ({ score }: { score: number }) => {
   );
 };
 
-const CategoryHeader = ({
-  title,
-  categoryScore,
-}: {
-  title: string;
-  categoryScore: number;
-}) => {
+const CategoryHeader = ({ title, categoryScore }: CategoryHeaderProps) => {
   return (
     <div className="flex flex-row gap-4 items-center py-2">
       <p className="text-2xl font-semibold">{title}</p>
@@ -54,11 +55,7 @@ const CategoryHeader = ({
   );
 };
 
-const CategoryContent = ({
-  tips,
-}: {
-  tips: { type: "good" | "improve"; tip: string; explanation: string }[];
-}) => {
+const CategoryContent = ({ tips }: CategoryContentProps) => {
   return (
     <div className="flex flex-col gap-4 items-center w-full">
       <div className="bg-gray-50 w-full rounded-lg px-5 py-4 grid grid-cols-2 gap-4">
@@ -83,7 +80,7 @@ const CategoryContent = ({
               "flex flex-col gap-2 rounded-2xl p-4",
               tip.type === "good"
                 ? "bg-green-50 border border-green-200 text-green-700"
-                : "bg-yellow-50 border border-yellow-200 text-yellow-700"
+                : "bg-yellow-50 border border-yellow-200 text-yellow-700",
             )}
           >
             <div className="flex flex-row gap-2 items-center">
@@ -106,7 +103,7 @@ const CategoryContent = ({
   );
 };
 
-const Details = ({ feedback }: { feedback: Feedback }) => {
+const Details = ({ feedback }: DetailsProps) => {
   return (
     <div className="flex flex-col gap-4 w-full">
       <Accordion>
