@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { usePuterStore } from "~/lib/puter";
 
 export function useResumes() {
-  const { kv } = usePuterStore();
+  const { kv,auth } = usePuterStore();
 
   const [resumes, setResumes] = useState<Resume[]>([]);
   const [loadingResumes, setLoadingResumes] = useState(false);
@@ -28,7 +28,7 @@ export function useResumes() {
     };
 
     loadResumes();
-  }, [kv]);
+  }, [kv,auth.isAuthenticated]);
 
   return { resumes, loadingResumes };
 }
